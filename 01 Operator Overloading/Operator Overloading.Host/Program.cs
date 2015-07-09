@@ -27,15 +27,19 @@ namespace OperatorOverloading.Host
             Console.ReadLine();
         }
 
-        private static Money Initialize(Money moneyObject) 
+        private static Money Initialize(Money moneyObject)
         {
+            double number;
             Console.WriteLine("Enter the Amount");
-            double amount = Convert.ToDouble(Console.ReadLine());
+            if(double.TryParse(Console.ReadLine(),out number)==false)
+            {
+                throw new Exception(Resource1.InvalidAmount);
+            }
             Console.WriteLine("Enter the Current");
             string currency = Console.ReadLine();
-                moneyObject.Amount = amount;
-                moneyObject.currency = currency;
-                return moneyObject;
+            moneyObject.Amount = number;
+            moneyObject.currency = currency;
+            return moneyObject;
         }
     }
 }

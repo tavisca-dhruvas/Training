@@ -16,13 +16,13 @@ namespace OperatorOverloading.Model
             {
                 return _amount;
             }
-            set 
+            set
             {
                 if (value < 0 && value > double.MaxValue)
                 {
-                    throw new System.Exception(Resource.InvalidValue);
+                    throw new System.Exception();
                 }
-                this._amount=value;
+                this._amount = value;
             }
         }
         private string _currency;
@@ -32,43 +32,48 @@ namespace OperatorOverloading.Model
             {
                 return _currency;
             }
-            set 
+            set
             {
-                if (string.IsNullOrEmpty(currency))
+                if (!string.IsNullOrEmpty(currency))
                 {
 
-                    throw new ArgumentNullException(Resource.InvalidCurrency);
+                    throw new ArgumentNullException(Resource1.InvalidCurrency);
                 }
                 else
                 {
                     this._currency = value;
-                    
+
 
                 }
-                
+
             }
         }
- 
+
 
         public static Money operator +(Money firstMoneyObject, Money secondMoneyObject)
         {
-            var thirdMoneyObject = new Money();
-            if (firstMoneyObject.currency.Equals(secondMoneyObject.currency,StringComparison.InvariantCultureIgnoreCase))
+            if (firstMoneyObject == null || secondMoneyObject == null)
             {
-                    thirdMoneyObject.Amount = firstMoneyObject.Amount + secondMoneyObject.Amount;
-                    thirdMoneyObject.currency = firstMoneyObject.currency;
-                    if (thirdMoneyObject.Amount > double.MaxValue)
-                    {
-                        throw new ArgumentException(Resource.InvalidSum);
-                    }
-                    
+                throw new Exception(Resource1.InvalidObject);
+            }
+
+            var thirdMoneyObject = new Money();
+            if (firstMoneyObject.currency.Equals(secondMoneyObject.currency, StringComparison.InvariantCultureIgnoreCase))
+            {
+                thirdMoneyObject.Amount = firstMoneyObject.Amount + secondMoneyObject.Amount;
+                thirdMoneyObject.currency = firstMoneyObject.currency;
+                if (thirdMoneyObject.Amount > double.MaxValue)
+                {
+                    throw new ArgumentException(Resource1.InvalidSum);
+                }
+
             }
             else
             {
-                throw new System.Exception(Resource.InvalidCurrency);
+                throw new System.Exception(Resource1.InvalidCurrency);
             }
             return thirdMoneyObject;
-            
+
         }
     }
 }
