@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 Operator Overloading", "01 Operator Overloading", "{B36943D9-0FD8-4DC6-B773-607C1B598D45}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Operator Overloading.Host", "01 Operator Overloading\Operator Overloading.Host\Operator Overloading.Host.csproj", "{226CC7F8-5FE3-4129-A8BC-067DBD4F35D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Operator Overloading.Model", "01 Operator Overloading\Operator Overloading.Model\Operator Overloading.Model.csproj", "{93AEAF51-C1FC-4035-8C69-F9F7B426A4CD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{226CC7F8-5FE3-4129-A8BC-067DBD4F35D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{226CC7F8-5FE3-4129-A8BC-067DBD4F35D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{226CC7F8-5FE3-4129-A8BC-067DBD4F35D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{226CC7F8-5FE3-4129-A8BC-067DBD4F35D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93AEAF51-C1FC-4035-8C69-F9F7B426A4CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93AEAF51-C1FC-4035-8C69-F9F7B426A4CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93AEAF51-C1FC-4035-8C69-F9F7B426A4CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93AEAF51-C1FC-4035-8C69-F9F7B426A4CD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{226CC7F8-5FE3-4129-A8BC-067DBD4F35D2} = {B36943D9-0FD8-4DC6-B773-607C1B598D45}
+		{93AEAF51-C1FC-4035-8C69-F9F7B426A4CD} = {B36943D9-0FD8-4DC6-B773-607C1B598D45}
+	EndGlobalSection
+EndGlobal
