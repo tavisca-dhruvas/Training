@@ -13,7 +13,7 @@ namespace OperatorOverloading.Host
         {
             try
             {
-                var firstMoneyObject = new Money();
+                var firstMoneyObject = new Money(); 
                 var secondMoneyObject = new Money();
                 firstMoneyObject = Initialize(firstMoneyObject);
                 secondMoneyObject = Initialize(secondMoneyObject);

@@ -34,7 +34,7 @@ namespace OperatorOverloading.Model
             }
             set
             {
-                if (!string.IsNullOrEmpty(currency))
+                if (string.IsNullOrEmpty(value))
                 {
 
                     throw new ArgumentNullException(Resource1.InvalidCurrency);
