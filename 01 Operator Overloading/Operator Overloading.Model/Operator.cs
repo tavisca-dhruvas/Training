@@ -12,11 +12,8 @@ namespace OperatorOverloading.Model
             get { return _amount; }
             private set
             {
-                if (value < 0)
-                {
-                    throw new Exception(Resources.InvalidAmount);
-                }
-                if (double.IsPositiveInfinity(value))
+ 
+                if (double.IsPositiveInfinity(value) || value>double.MaxValue || value <0)
                 {
                     throw new Exception(Resources.InvalidAmount);
                 }
@@ -43,6 +40,11 @@ namespace OperatorOverloading.Model
            Currency = currency;
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="inputAmount">eg 100 USD</param>
         public Money(string inputAmount)
         {
 
