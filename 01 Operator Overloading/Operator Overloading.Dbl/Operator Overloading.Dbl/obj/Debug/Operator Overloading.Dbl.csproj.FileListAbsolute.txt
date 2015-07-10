@@ -1,8 +1,0 @@
-D:\Training\01 Operator Overloading\Operator Overloading.Dbl\Operator Overloading.Dbl\bin\Debug\Operator Overloading.Dbl.dll.config
-D:\Training\01 Operator Overloading\Operator Overloading.Dbl\Operator Overloading.Dbl\bin\Debug\Operator Overloading.Dbl.dll
-D:\Training\01 Operator Overloading\Operator Overloading.Dbl\Operator Overloading.Dbl\bin\Debug\Operator Overloading.Dbl.pdb
-D:\Training\01 Operator Overloading\Operator Overloading.Dbl\Operator Overloading.Dbl\bin\Debug\Operator Overloading.Parse.dll
-D:\Training\01 Operator Overloading\Operator Overloading.Dbl\Operator Overloading.Dbl\bin\Debug\Operator Overloading.Parse.pdb
-D:\Training\01 Operator Overloading\Operator Overloading.Dbl\Operator Overloading.Dbl\obj\Debug\Operator Overloading.Dbl.csprojResolveAssemblyReference.cache
-D:\Training\01 Operator Overloading\Operator Overloading.Dbl\Operator Overloading.Dbl\obj\Debug\Operator Overloading.Dbl.dll
-D:\Training\01 Operator Overloading\Operator Overloading.Dbl\Operator Overloading.Dbl\obj\Debug\Operator Overloading.Dbl.pdb
