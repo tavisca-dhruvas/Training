@@ -1,0 +1,4 @@
+D:\Training\01 Operator Overloading\Operator Overloading.Parse\Operator Overloading.Parse\bin\Debug\Operator Overloading.Parse.dll
+D:\Training\01 Operator Overloading\Operator Overloading.Parse\Operator Overloading.Parse\bin\Debug\Operator Overloading.Parse.pdb
+D:\Training\01 Operator Overloading\Operator Overloading.Parse\Operator Overloading.Parse\obj\Debug\Operator Overloading.Parse.dll
+D:\Training\01 Operator Overloading\Operator Overloading.Parse\Operator Overloading.Parse\obj\Debug\Operator Overloading.Parse.pdb
