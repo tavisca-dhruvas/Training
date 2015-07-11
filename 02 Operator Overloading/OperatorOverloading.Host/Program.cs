@@ -18,7 +18,7 @@ namespace OperatorOverloading.Host
                 Console.WriteLine("Enter the Amount to Convert ");
                 string toCurrency = Console.ReadLine();
                 var output = amount.ConvertCurrency(toCurrency);
-                Console.WriteLine("Your Converted amount is " + output + " " + toCurrency);
+                Console.WriteLine("Your Converted amount is " + output);
                 Console.ReadKey();
 
             }

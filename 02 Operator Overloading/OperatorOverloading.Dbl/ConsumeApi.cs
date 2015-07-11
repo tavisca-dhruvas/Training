@@ -17,8 +17,8 @@ namespace OperatorOverloading.Dbl
 
         public ApiClass SendRequest()
         {
-            string url = BASE_URL + ENDPOINT + "?access_key=" + ACCESS_KEY;
-            System.Net.WebRequest req = System.Net.WebRequest.Create(url);
+            string uri = BASE_URL + ENDPOINT + "?access_key=" + ACCESS_KEY;
+            System.Net.WebRequest req = System.Net.WebRequest.Create(uri);
 
             System.Net.WebResponse resp = req.GetResponse();
             System.IO.StreamReader sr = new System.IO.StreamReader(resp.GetResponseStream());

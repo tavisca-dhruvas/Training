@@ -69,22 +69,30 @@ namespace OperatorOverloading.Model
             Amount = amount;
             Currency = amountArr[1];
         }
-        public double ConvertCurrency(string toCurrency)
+        /// <summary>
+        /// Converts the Money into desired Currency 
+        /// </summary>
+        /// <param name="INR"></param>
+        /// <returns>100 INR</returns>
+        public Money ConvertCurrency(string toCurrency)
         {
             if (string.IsNullOrWhiteSpace(toCurrency) || toCurrency.Length != 3 || Regex.IsMatch(toCurrency, @"^[a-zA-Z]+$") == false)
             {
                 throw new System.Exception(Resources.InvalidCurrency);
             }
             CurrencyConverter currencyObject = new CurrencyConverter();
-            var exchangerate = currencyObject.GetConversion(this.Currency, toCurrency);
-             this.Amount = exchangerate * this.Amount;
+            var exchangeRate = currencyObject.GetConversion(this.Currency, toCurrency);
+             this.Amount = exchangeRate * this.Amount;
             if (double.IsPositiveInfinity(Amount) || Amount > double.MaxValue)
             {
                 throw new System.Exception(Resources.InvalidSum);
 
             }
-            return (Amount);
+            Money Money2 = new Money(Amount, toCurrency);
+            return (Money2);
         }
+
+
 
         public static Money operator +(Money object1, Money object2)
         {
