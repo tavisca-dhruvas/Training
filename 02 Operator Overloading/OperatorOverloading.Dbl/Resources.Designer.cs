@@ -70,6 +70,15 @@ namespace OperatorOverloading.Dbl {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &quot;The Api format is changed &quot;.
+        /// </summary>
+        internal static string InvalidApiFormat {
+            get {
+                return ResourceManager.GetString("InvalidApiFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &quot;please enter the correct Currency&quot;.
         /// </summary>
         internal static string InvalidCurrency {

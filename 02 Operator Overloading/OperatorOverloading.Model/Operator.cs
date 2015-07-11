@@ -77,13 +77,13 @@ namespace OperatorOverloading.Model
             }
             CurrencyConverter currencyObject = new CurrencyConverter();
             var exchangerate = currencyObject.GetConversion(this.Currency, toCurrency);
-            var totalAmount = exchangerate * this.Amount;
-            if (double.IsPositiveInfinity(totalAmount) || totalAmount > double.MaxValue)
+             this.Amount = exchangerate * this.Amount;
+            if (double.IsPositiveInfinity(Amount) || Amount > double.MaxValue)
             {
                 throw new System.Exception(Resources.InvalidSum);
 
             }
-            return (totalAmount);
+            return (Amount);
         }
 
         public static Money operator +(Money object1, Money object2)

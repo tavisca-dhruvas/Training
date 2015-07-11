@@ -30,21 +30,27 @@ namespace OperatorOverloading.Dbl
         }
         public ApiClass JasonParser(ApiClass apiObject, string response)
         {
-            string[] blocks = response.Split('{', '}');
-            string[] sourceFinder = blocks[1].Split(',');
-            string[] keyValue;
+            try
+            {
+                string[] blocks = response.Split('{', '}');     //Splits the String in Properties and Data
+                string[] sourceFinder = blocks[1].Split(',');   //Splits Source and Quote
+                string[] keyValue;
 
-                        string[] currencyRate = blocks[2].Split(',');
-                        foreach (string individualRates in currencyRate)
-                        {
-                            
-                            keyValue = individualRates.Split(':');
-                            keyValue[0] = keyValue[0].Trim();
-                            keyValue[0] = keyValue[0].Remove(0, 4);
-                            keyValue[0] = keyValue[0].Remove(keyValue[0].Length - 1, 1);
-                            apiObject.dictionaryObject.Add(keyValue[0], double.Parse(keyValue[1]));
-                            
-                        }
+                string[] currencyRate = blocks[2].Split(',');   //splits currency rates
+                foreach (string individualRates in currencyRate)
+                {
+
+                    keyValue = individualRates.Split(':');
+                    keyValue[0] = keyValue[0].Trim();
+                    keyValue[0] = keyValue[0].Remove(0, 4);
+                    keyValue[0] = keyValue[0].Remove(keyValue[0].Length - 1, 1); //Removes the extra " with keyvalue
+                    apiObject.dictionaryObject.Add(keyValue[0], double.Parse(keyValue[1])); // adds quote and keyvalue in Dictionary
+                }
+            }
+            catch (Exception)
+            {
+                throw new System.Exception(Resources.InvalidApiFormat);
+            }
             return apiObject;
         }
     }
