@@ -50,13 +50,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Operator Overloading.Model\Operator Overloading.Model.csproj">
-      <Project>{93aeaf51-c1fc-4035-8c69-f9f7b426a4cd}</Project>
-      <Name>Operator Overloading.Model</Name>
-    </ProjectReference>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Service References\" />
+    <ProjectReference Include="..\..\02 Operator Overloading\OperatorOverloading.Model\OperatorOverloading.Model.csproj">
+      <Project>{b50a4ca5-2739-4b46-99d6-c5ffb397ba82}</Project>
+      <Name>OperatorOverloading.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

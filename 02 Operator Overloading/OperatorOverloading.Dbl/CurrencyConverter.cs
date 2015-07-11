@@ -13,16 +13,16 @@ namespace OperatorOverloading.Dbl
         public double GetConversion(string currency1, string currency2)
         {
             double rate;
-            ConsumeApi ConsumeObject = new ConsumeApi();
-            ApiClass apiObject = ConsumeObject.sendRequest();
+            ConsumeApi consumeObject = new ConsumeApi();
+            ApiClass apiObject = consumeObject.SendRequest();
             currency1 = currency1.ToUpper();
             if (currency1.Equals("USD"))
             {
-                return rate = apiObject.DictionaryObject["INR"];
+                return rate = apiObject.dictionaryObject["INR"];
             }
             else if (currency1.Equals("INR"))
             {
-                return rate = (1/apiObject.DictionaryObject["INR"]);
+                return rate = (1/apiObject.dictionaryObject["INR"]);
             }
             else
                 throw new Exception(Resources.InvalidCurrency);

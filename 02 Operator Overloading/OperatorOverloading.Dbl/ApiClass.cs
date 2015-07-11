@@ -14,7 +14,7 @@ namespace OperatorOverloading.Dbl
         public string privacy { get; set; }
         public int timestamp { get; set; }
         public string source { get; set; }
-        public Dictionary<string, double> DictionaryObject = new Dictionary<string, double>();
+        public Dictionary<string, double> dictionaryObject = new Dictionary<string, double>();
 
     }
 }

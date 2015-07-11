@@ -8,6 +8,6 @@ namespace OperatorOverloading.Parse
 {
     public interface Iparse
     {
-        double GetConversion(string Currency1, string currency2);
+        double GetConversion(string currency1, string currency2);
     }
 }

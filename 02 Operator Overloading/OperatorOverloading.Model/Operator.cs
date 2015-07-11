@@ -69,9 +69,9 @@ namespace OperatorOverloading.Model
             Amount = amount;
             Currency = amountArr[1];
         }
-        public double convertCurrency(string toCurrency)
+        public double ConvertCurrency(string toCurrency)
         {
-            if (string.IsNullOrWhiteSpace(toCurrency) || toCurrency.Length != 3 || Regex.IsMatch(toCurrency, @"^[a-zA-Z]+$")==false)
+            if (string.IsNullOrWhiteSpace(toCurrency) || toCurrency.Length != 3 || Regex.IsMatch(toCurrency, @"^[a-zA-Z]+$") == false)
             {
                 throw new System.Exception(Resources.InvalidCurrency);
             }
@@ -98,7 +98,7 @@ namespace OperatorOverloading.Model
             }
             else
             {
-                double totalAmount = object1.Amount + object2.Amount;
+                var totalAmount = object1.Amount + object2.Amount;
                 return new Money(totalAmount, object1.Currency);
             }
 

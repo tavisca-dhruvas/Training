@@ -14,12 +14,11 @@ namespace OperatorOverloading.Host
             try
             {
                 Console.Write("Enter first Amount (Amount Currency) ");
-                var amount1 = new Money(Console.ReadLine());
-
+                var amount = new Money(Console.ReadLine());
                 Console.WriteLine("Enter the Amount to Convert ");
                 string toCurrency = Console.ReadLine();
-                var output = amount1.convertCurrency(toCurrency.ToUpper());
-                Console.WriteLine("your Converted amount is " + output + " " + toCurrency);
+                var output = amount.ConvertCurrency(toCurrency);
+                Console.WriteLine("Your Converted amount is " + output + " " + toCurrency);
                 Console.ReadKey();
 
             }
