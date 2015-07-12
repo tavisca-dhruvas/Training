@@ -82,7 +82,7 @@ namespace OperatorOverloading.Model
             }
             CurrencyConverter currencyObject = new CurrencyConverter();
             var exchangeRate = currencyObject.GetConversion(this.Currency, toCurrency);
-             this.Amount = exchangeRate * this.Amount;
+            Amount = exchangeRate * this.Amount;
             if (double.IsPositiveInfinity(Amount) || Amount > double.MaxValue)
             {
                 throw new System.Exception(Resources.InvalidSum);

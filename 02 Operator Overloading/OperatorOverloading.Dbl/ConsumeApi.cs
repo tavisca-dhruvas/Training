@@ -14,6 +14,7 @@ namespace OperatorOverloading.Dbl
         public string ACCESS_KEY = ConfigurationManager.AppSettings["acessKey"];
         public string BASE_URL = ConfigurationManager.AppSettings["baseURL"];
         public string ENDPOINT = ConfigurationManager.AppSettings["endpoint"];
+        
 
         public ApiClass SendRequest()
         {
@@ -32,7 +33,8 @@ namespace OperatorOverloading.Dbl
         {
             try
             {
-                string[] blocks = response.Split('{', '}');     //Splits the String in Properties and Data
+                string[] blocks = response.Split('{', '}');
+                //Splits the String in Properties and Data
                 string[] sourceFinder = blocks[1].Split(',');   //Splits Source and Quote
                 string[] keyValue;
 
