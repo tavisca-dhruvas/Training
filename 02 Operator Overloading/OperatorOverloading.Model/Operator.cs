@@ -1,6 +1,7 @@
 ﻿using System;
 using OperatorOverloading.Dbl;
 using System.Text.RegularExpressions;
+
 namespace OperatorOverloading.Model
 {
     public class Money
@@ -74,7 +75,7 @@ namespace OperatorOverloading.Model
         /// </summary>
         /// <param name="INR"></param>
         /// <returns>100 INR</returns>
-        public Money ConvertCurrency(string toCurrency)
+        public Money Convert(string toCurrency)
         {
             if (string.IsNullOrWhiteSpace(toCurrency) || toCurrency.Length != 3 || Regex.IsMatch(toCurrency, @"^[a-zA-Z]+$") == false)
             {
@@ -82,13 +83,13 @@ namespace OperatorOverloading.Model
             }
             CurrencyConverter currencyObject = new CurrencyConverter();
             var exchangeRate = currencyObject.GetConversion(this.Currency, toCurrency);
-            Amount = exchangeRate * this.Amount;
+            var convertedAmount = exchangeRate * this.Amount;
             if (double.IsPositiveInfinity(Amount) || Amount > double.MaxValue)
             {
                 throw new System.Exception(Resources.InvalidSum);
 
             }
-            Money Money2 = new Money(Amount, toCurrency);
+            Money Money2 = new Money(convertedAmount, toCurrency);
             return (Money2);
         }
 

@@ -9,12 +9,12 @@ namespace OperatorOverloading.Dbl
     public class ApiClass
     {
 
-        public bool success { get; set; }
-        public string terms { get; set; }
-        public string privacy { get; set; }
-        public int timestamp { get; set; }
-        public string source { get; set; }
-        public Dictionary<string, double> dictionaryObject = new Dictionary<string, double>();
+        public bool Success { get; set; }
+        public string Terms { get; set; }
+        public string Privacy { get; set; }
+        public int Timestamp { get; set; }
+        public string Source { get; set; }
+        public Dictionary<string, double> CurrencyRateDictionary = new Dictionary<string, double>();
 
     }
 }

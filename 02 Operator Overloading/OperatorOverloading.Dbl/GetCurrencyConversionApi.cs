@@ -8,31 +8,31 @@ using OperatorOverloading.Dbl;
 
 namespace OperatorOverloading.Dbl
 {
-    public class ConsumeApi
+    public class GetCurrencyConversionApi
     {
 
-        public string ACCESS_KEY = ConfigurationManager.AppSettings["acessKey"];
-        public string BASE_URL = ConfigurationManager.AppSettings["baseURL"];
-        public string ENDPOINT = ConfigurationManager.AppSettings["endpoint"];
-        
+        private string AccessKey = ConfigurationManager.AppSettings["acessKey"];
+        private string BaseUrl = ConfigurationManager.AppSettings["baseURL"];
+        private string EndPoint = ConfigurationManager.AppSettings["endpoint"];
+
 
         public ApiClass SendRequest()
         {
-            string uri = BASE_URL + ENDPOINT + "?access_key=" + ACCESS_KEY;
+            string uri = BaseUrl + EndPoint + "?access_key=" + AccessKey;
             System.Net.WebRequest req = System.Net.WebRequest.Create(uri);
 
             System.Net.WebResponse resp = req.GetResponse();
             System.IO.StreamReader sr = new System.IO.StreamReader(resp.GetResponseStream());
             var response = sr.ReadToEnd().Trim();
-            CurrencyConverter currencyConverterObject = new CurrencyConverter();
             ApiClass apiObject = new ApiClass();
-            apiObject =JasonParser(apiObject, response);
+            apiObject = JsonParser(apiObject, response);
             return apiObject;
         }
-        public ApiClass JasonParser(ApiClass apiObject, string response)
+        private ApiClass JsonParser(ApiClass apiObject, string response)
         {
             try
             {
+                double rate;
                 string[] blocks = response.Split('{', '}');
                 //Splits the String in Properties and Data
                 string[] sourceFinder = blocks[1].Split(',');   //Splits Source and Quote
@@ -45,8 +45,12 @@ namespace OperatorOverloading.Dbl
                     keyValue = individualRates.Split(':');
                     keyValue[0] = keyValue[0].Trim();
                     keyValue[0] = keyValue[0].Remove(0, 4);
-                    keyValue[0] = keyValue[0].Remove(keyValue[0].Length - 1, 1); //Removes the extra " with keyvalue
-                    apiObject.dictionaryObject.Add(keyValue[0], double.Parse(keyValue[1])); // adds quote and keyvalue in Dictionary
+                    keyValue[0] = keyValue[0].Remove(keyValue[0].Length - 1, 1);  //Removes the extra " with keyvalue
+                    if ((double.TryParse(keyValue[1], out rate) == false))
+                    {
+                        throw new Exception(Resources.InvalidArgument);
+                    }
+                    apiObject.CurrencyRateDictionary.Add(keyValue[0], rate); // adds quote and keyvalue in Dictionary
                 }
             }
             catch (Exception)

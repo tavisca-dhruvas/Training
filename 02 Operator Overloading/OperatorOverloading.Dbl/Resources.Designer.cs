@@ -79,6 +79,15 @@ namespace OperatorOverloading.Dbl {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &quot;The Argument is Invalid&quot;.
+        /// </summary>
+        internal static string InvalidArgument {
+            get {
+                return ResourceManager.GetString("InvalidArgument", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &quot;please enter the correct Currency&quot;.
         /// </summary>
         internal static string InvalidCurrency {

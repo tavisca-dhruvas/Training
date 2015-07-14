@@ -123,6 +123,9 @@
   <data name="InvalidApiFormat" xml:space="preserve">
     <value>"The Api format is changed "</value>
   </data>
+  <data name="InvalidArgument" xml:space="preserve">
+    <value>"The Argument is Invalid"</value>
+  </data>
   <data name="InvalidCurrency" xml:space="preserve">
     <value>"please enter the correct Currency"</value>
   </data>

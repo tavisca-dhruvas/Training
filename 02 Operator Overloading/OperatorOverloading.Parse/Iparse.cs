@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OperatorOverloading.Parse
 {
-    public interface Iparse
+    public interface IParse
     {
         double GetConversion(string currency1, string currency2);
     }

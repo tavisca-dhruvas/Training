@@ -9,23 +9,23 @@ using System.Configuration;
 
 namespace OperatorOverloading.Dbl
 {
-    public class CurrencyConverter : Iparse
+    public class CurrencyConverter : IParse
     {
-        public string SOURCE = ConfigurationManager.AppSettings["source"];
+        private string Source = ConfigurationManager.AppSettings["source"];
         public double GetConversion(string currency1, string currency2)
         {
             double rate;
-            ConsumeApi consumeObject = new ConsumeApi();
-            ApiClass apiObject = consumeObject.SendRequest();
+            GetCurrencyConversionApi conversionApiObject = new GetCurrencyConversionApi();
+            ApiClass apiObject = conversionApiObject.SendRequest();
             currency1 = currency1.ToUpper();
             currency2 = currency2.ToUpper();
-            if (currency1.Equals(SOURCE))
+            if (currency1.Equals(Source))
             {
-                return rate = apiObject.dictionaryObject[currency2];
+                return rate = apiObject.CurrencyRateDictionary[currency2];
             }
-            else if (currency2.Equals(SOURCE))
+            else if (currency2.Equals(Source))
             {
-                return rate = (1/apiObject.dictionaryObject[currency1]);
+                return rate = (1 / apiObject.CurrencyRateDictionary[currency1]);
             }
             else
                 throw new Exception(Resources.InvalidCurrency);
