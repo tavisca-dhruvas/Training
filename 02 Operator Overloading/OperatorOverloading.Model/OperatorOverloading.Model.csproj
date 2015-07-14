@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{226CC7F8-5FE3-4129-A8BC-067DBD4F35D2}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{B50A4CA5-2739-4B46-99D6-C5FFB397BA82}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Operator_Overloading.Host</RootNamespace>
-    <AssemblyName>Operator Overloading.Host</AssemblyName>
+    <RootNamespace>OperatorOverloading.Model</RootNamespace>
+    <AssemblyName>OperatorOverloading.Model</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -33,9 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Net" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,19 +39,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Operator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <EmbeddedResource Include="Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\02 Operator Overloading\OperatorOverloading.Model\OperatorOverloading.Model.csproj">
-      <Project>{b50a4ca5-2739-4b46-99d6-c5ffb397ba82}</Project>
-      <Name>OperatorOverloading.Model</Name>
+    <ProjectReference Include="..\OperatorOverloading.Dbl\OperatorOverloading.Dbl.csproj">
+      <Project>{307354d7-67b9-41cd-928c-506e7aef5739}</Project>
+      <Name>OperatorOverloading.Dbl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OperatorOverloading.Parse\OperatorOverloading.Parse.csproj">
+      <Project>{f2c50ac3-fec9-4617-b9bc-fe8e50bacb77}</Project>
+      <Name>OperatorOverloading.Parse</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
