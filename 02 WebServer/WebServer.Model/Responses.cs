@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace WebServer.Model
 {
-    class CreateResponse
+    class Responses
     {
 
         RegistryKey registryKey = Registry.ClassesRoot;
@@ -18,7 +18,7 @@ namespace WebServer.Model
         private string _contentPath;
         public FileHandler FileHandler;
 
-        public CreateResponse(Socket clientSocket, string contentPath)
+        public Responses(Socket clientSocket, string contentPath)
         {
             _contentPath = contentPath;
             ClientSocket = clientSocket;

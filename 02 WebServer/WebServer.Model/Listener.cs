@@ -10,18 +10,18 @@ using System.Threading;
 using System.IO;
 using System.Diagnostics;
 using System.Configuration;
+using Webserver.Model;
 
 
 namespace WebServer.Model
 {
    public  class Listener
     {
-
-        private TcpListener _listener;
+       private TcpListener _listener;
         private bool _running = false;
         public Listener(int port)
         {
-            _listener = new TcpListener(IPAddress.Any, port);
+            this._listener = new TcpListener(IPAddress.Any, port);
         }
 
         public void Start()
@@ -30,16 +30,22 @@ namespace WebServer.Model
             serverThread.Start();
         }
 
-        public void Run()
+        private void Run()
         {
             _running = true;
-            _listener.Start();
+            this._listener.Start();
+            Queue queueObject = new Queue();
             while (_running)
             {
                 if (_listener.Pending())
                 {
 
-                    Socket clientSocket = _listener.AcceptSocket();
+                    Socket clientSocket = this._listener.AcceptSocket();
+                    if (clientSocket.Connected == false) continue;
+                    queueObject.Enqueue(clientSocket);
+
+                    if (queueObject.TryDequeue(out clientSocket) == false) continue;
+
                     Dispatcher dispatcher = new Dispatcher(clientSocket);
                     Thread dispatcherThread = new Thread(new ThreadStart(dispatcher.HandleClient));
                     dispatcherThread.Start();

@@ -120,6 +120,9 @@
   <data name="BufferFull" xml:space="preserve">
     <value>"The buffer is full"</value>
   </data>
+  <data name="EmptyResponse" xml:space="preserve">
+    <value>"Empty response"</value>
+  </data>
   <data name="InitializationError" xml:space="preserve">
     <value>"Intialoazation Error"</value>
   </data>

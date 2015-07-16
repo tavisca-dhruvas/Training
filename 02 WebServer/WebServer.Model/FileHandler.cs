@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace WebServer.Model
 {
-    class FileHandler
+    public class FileHandler
     {
         private string _contentPath;
 
         public FileHandler(string contentPath)
         {
-            _contentPath = contentPath;
+            this._contentPath = contentPath;
         }
 
         internal bool DoesFileExists(string directory)
@@ -21,11 +21,11 @@ namespace WebServer.Model
             return File.Exists(_contentPath + directory);
         }
 
-        internal byte[] ReadFile(string path)
+        internal byte[] ReadFile(string Path)
         {
             //return File.ReadAllBytes(path);
 
-            byte[] content = File.ReadAllBytes(_contentPath + path);
+            byte[] content = File.ReadAllBytes(_contentPath + Path);
             return content;
         }
     }

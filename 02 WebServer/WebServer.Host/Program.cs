@@ -13,9 +13,8 @@ namespace WebServer.Host
         {
             try
             {
-                Listener serverListener = new Listener(8080);
+                Listener serverListener = new Listener(80);
                 serverListener.Start();
-                Console.ReadKey();
             }
             catch (Exception e)
             {

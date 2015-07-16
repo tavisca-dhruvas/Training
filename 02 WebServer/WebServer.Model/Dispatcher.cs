@@ -9,33 +9,28 @@ using System.Configuration;
 
 namespace WebServer.Model
 {
-    class Dispatcher
+   public  class Dispatcher
     {
-        private Socket _clientSocket = null; 
+        private  Socket _clientSocket = null;
 
         public Dispatcher(Socket clientSocket)
         {
-            _clientSocket = clientSocket;
+            this._clientSocket = clientSocket;
         }
         public void HandleClient()
         {
-            var requestParser = new RequestParser();
-            string requestString = DecodeRequest(_clientSocket);
-            requestParser.Parser(requestString);
+            var parserObject = new Parser();
+            string requestString = DecodeRequest(this._clientSocket);
+            parserObject.RequestParser(requestString);
 
-            Console.WriteLine(requestParser.HttpUrl);
-            if ( requestParser.HttpMethod !=null &&  requestParser.HttpMethod.Equals("get", StringComparison.InvariantCultureIgnoreCase))
+            Console.WriteLine(parserObject.HttpUrl);
+            if (parserObject.HttpMethod != null && parserObject.HttpMethod.Equals("get", StringComparison.InvariantCultureIgnoreCase))
             {
-                
-                var createResponse = new CreateResponse(_clientSocket, ConfigurationManager.AppSettings["Path"]);
-                createResponse.RequestUrl(requestParser.HttpUrl);
+
+                var createResponse = new Responses(this._clientSocket, ConfigurationManager.AppSettings["Path"]);
+                createResponse.RequestUrl(parserObject.HttpUrl);
             }
-            else
-            {
-                Console.WriteLine("unimplemented Code");
-              
-            }
-            StopClientSocket(_clientSocket);  
+            StopClientSocket(this._clientSocket);
         }
 
         public void StopClientSocket(Socket clientSocket)
@@ -47,20 +42,23 @@ namespace WebServer.Model
         private string DecodeRequest(Socket clientSocket)
         {
             Encoding _charEncoder = Encoding.UTF8;
-            var receivedBufferlen = 0;
-            var buffer = new byte[10240];
-            try
+            var bucket = new byte[1024];
+            using (var buffer = new System.IO.MemoryStream())
             {
-                receivedBufferlen = clientSocket.Receive(buffer);
+                while (true)
+                {
+                    var bytesRead = clientSocket.Receive(bucket);
+                    if (bytesRead > 0)
+                        buffer.Write(bucket, 0, bytesRead);
+
+                    if (clientSocket.Available == 0)
+                        break;
+                }
+                return  buffer.ToString();
             }
-            catch (Exception)
-            {
-                Console.WriteLine(Resources.BufferFull);
-            }
-            return _charEncoder.GetString(buffer, 0, receivedBufferlen);
+
+
+
         }
-
-
-
     }
 }
