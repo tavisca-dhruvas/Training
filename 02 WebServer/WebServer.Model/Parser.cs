@@ -7,20 +7,21 @@ using System.Threading;
 
 namespace WebServer.Model
 {
-    public class Parser
+    public class RequestParser
     {
-        private Encoding _charEncoder = Encoding.UTF8;
+
         public string HttpMethod;
         public string HttpUrl;
         public string HttpProtocolVersion;
 
 
-        public void RequestParser(string requestString)
+        public void Parser(string requestString)
         {
+
             try
             {
-                if (requestString == null)
-                    throw new Exception(Resources.UnImplementedMethod);
+                if (string.IsNullOrWhiteSpace(requestString))
+                    return;
                 string[] tokens = requestString.Split(' ');
 
                 tokens[1] = tokens[1].Replace("/", "\\");
@@ -28,9 +29,9 @@ namespace WebServer.Model
                 HttpUrl = tokens[1];
                 HttpProtocolVersion = tokens[2];
             }
-            catch (Exception )
+            catch (Exception)
             {
-                throw new Exception (Resources.RequestInvalid);
+                Thread.Yield();
             }
         }
     }

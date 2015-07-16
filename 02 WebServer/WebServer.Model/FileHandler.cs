@@ -13,7 +13,7 @@ namespace WebServer.Model
 
         public FileHandler(string contentPath)
         {
-            this._contentPath = contentPath;
+            _contentPath = contentPath;
         }
 
         internal bool DoesFileExists(string directory)
@@ -21,11 +21,9 @@ namespace WebServer.Model
             return File.Exists(_contentPath + directory);
         }
 
-        internal byte[] ReadFile(string Path)
+        internal byte[] ReadFile(string path)
         {
-            //return File.ReadAllBytes(path);
-
-            byte[] content = File.ReadAllBytes(_contentPath + Path);
+            byte[] content = File.ReadAllBytes(_contentPath + path);
             return content;
         }
     }

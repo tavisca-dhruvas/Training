@@ -6,19 +6,19 @@ using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
+using System.Configuration;
 
 namespace WebServer.Model
 {
-    class Responses
+    public class Response
     {
-
         RegistryKey registryKey = Registry.ClassesRoot;
         public Socket ClientSocket = null;
-        private Encoding _charEncoder = Encoding.UTF8;
         private string _contentPath;
         public FileHandler FileHandler;
 
-        public Responses(Socket clientSocket, string contentPath)
+        public Response(Socket clientSocket, string contentPath)
         {
             _contentPath = contentPath;
             ClientSocket = clientSocket;
@@ -30,40 +30,27 @@ namespace WebServer.Model
             int dotIndex = requestedFile.LastIndexOf('.') + 1;
             if (dotIndex > 0)
             {
-                if (FileHandler.DoesFileExists(requestedFile))   
+                if (FileHandler.DoesFileExists(requestedFile))    //If yes check existence of the file
                     SendResponse(ClientSocket, FileHandler.ReadFile(requestedFile), "200 Ok", GetTypeOfFile(registryKey, (_contentPath + requestedFile)));
                 else
-                    SendErrorResponce(ClientSocket);     
+                    SendErrorResponce(ClientSocket);      // We don't support this extension.
             }
-            else   
+            else                                        //find default file as given in App.config
             {
-                if (FileHandler.DoesFileExists("\\index.htm"))
-                    SendResponse(ClientSocket, FileHandler.ReadFile("\\index.htm"), "200 Ok", "text/html");
-                else if (FileHandler.DoesFileExists("\\index.html"))
-                    SendResponse(ClientSocket, FileHandler.ReadFile("\\index.html"), "200 Ok", "text/html");
-                else
-                    SendErrorResponce(ClientSocket);
+                SendResponse(ClientSocket, FileHandler.ReadFile(ConfigurationManager.AppSettings["default-document"]), "200 Ok", "text/html");
             }
         }
 
         private string GetTypeOfFile(RegistryKey registryKey, string fileName)
         {
             RegistryKey fileClass = registryKey.OpenSubKey(Path.GetExtension(fileName));
-            string type = "";
-            try
-            {
-                type = fileClass.GetValue("Content Type").ToString();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-            return type;
+            return fileClass.GetValue("Content Type").ToString();
         }
 
         private void SendErrorResponce(Socket clientSocket)
         {
-            SendResponse(clientSocket, null, "404 Not Found", "text/html");
+            byte[] emptyByteArray = new byte[0];
+            SendResponse(clientSocket, emptyByteArray, "404 Not Found", "text/html");
         }
 
 
@@ -76,20 +63,19 @@ namespace WebServer.Model
                 clientSocket.Send(byteContent);
                 clientSocket.Close();
             }
-            catch (Exception e)
+            catch
             {
-                Console.WriteLine(e.Message);
+                Thread.Yield();
             }
         }
 
         private byte[] CreateHeader(string responseCode, int contentLength, string contentType)
         {
-            return _charEncoder.GetBytes("HTTP/1.1 " + responseCode + "\r\n"
+            return Encoding.UTF8.GetBytes("HTTP/1.1 " + responseCode + "\r\n"
                                   + "Server: Simple Web Server\r\n"
                                   + "Content-Length: " + contentLength + "\r\n"
                                   + "Connection: close\r\n"
                                   + "Content-Type: " + contentType + "\r\n\r\n");
         }
-
     }
 }

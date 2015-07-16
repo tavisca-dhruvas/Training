@@ -1,16 +1,17 @@
 ﻿using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections;
+using System.Net.Sockets;
+using System.Collections.Concurrent;
 
-namespace Webserver.Model
+namespace WebServer.Model
 {
-    public class Queue 
+    public class InProcQueue : IQueue
     {
-        public ConcurrentQueue<Socket> _queue = new ConcurrentQueue<Socket>();
+        private ConcurrentQueue<Socket> _queue = new ConcurrentQueue<Socket>();
 
         public bool TryDequeue(out Socket socket)
         {
@@ -20,6 +21,7 @@ namespace Webserver.Model
         public void Enqueue(Socket socket)
         {
             this._queue.Enqueue(socket);
+
         }
     }
 }

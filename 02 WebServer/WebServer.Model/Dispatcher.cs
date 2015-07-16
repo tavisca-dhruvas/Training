@@ -9,56 +9,69 @@ using System.Configuration;
 
 namespace WebServer.Model
 {
-   public  class Dispatcher
+    class Dispatcher
     {
-        private  Socket _clientSocket = null;
-
-        public Dispatcher(Socket clientSocket)
+        private Socket _clientSocket = null;
+        private bool _isRunning = true;
+        internal void Start()
+        {
+            while (this._isRunning)
+            {
+                Socket socket;
+                if (Application.RequestQueue.TryDequeue(out socket) == false)
+                    continue;
+                Task.Run(() =>
+                {
+                    this.Dispatch(socket);
+                });
+            }
+        }
+        public void Dispatch(Socket clientSocket)
         {
             this._clientSocket = clientSocket;
-        }
-        public void HandleClient()
-        {
-            var parserObject = new Parser();
-            string requestString = DecodeRequest(this._clientSocket);
-            parserObject.RequestParser(requestString);
+            var requestParser = new RequestParser();
+            var requestString = DecodeRequest(_clientSocket);
+            requestParser.Parser(requestString);
 
-            Console.WriteLine(parserObject.HttpUrl);
-            if (parserObject.HttpMethod != null && parserObject.HttpMethod.Equals("get", StringComparison.InvariantCultureIgnoreCase))
+            Console.WriteLine(requestParser.HttpUrl);
+
+            if (requestParser.HttpMethod != null && requestParser.HttpMethod.Equals("GET"))
             {
 
-                var createResponse = new Responses(this._clientSocket, ConfigurationManager.AppSettings["Path"]);
-                createResponse.RequestUrl(parserObject.HttpUrl);
+                var response = new Response(_clientSocket, ConfigurationManager.AppSettings["Path"]);
+                response.RequestUrl(requestParser.HttpUrl);
             }
-            StopClientSocket(this._clientSocket);
+            else
+            {
+                new InProcQueue().Enqueue(_clientSocket);
+
+            }
         }
 
-        public void StopClientSocket(Socket clientSocket)
+        internal void Stop()
         {
-            if (clientSocket != null)
-                clientSocket.Close();
+            this._isRunning = false;
         }
 
         private string DecodeRequest(Socket clientSocket)
         {
             Encoding _charEncoder = Encoding.UTF8;
-            var bucket = new byte[1024];
-            using (var buffer = new System.IO.MemoryStream())
+            var receivedBufferlen = 0;
+            var buffer = new byte[1024];
+            try
             {
-                while (true)
-                {
-                    var bytesRead = clientSocket.Receive(bucket);
-                    if (bytesRead > 0)
-                        buffer.Write(bucket, 0, bytesRead);
-
-                    if (clientSocket.Available == 0)
-                        break;
-                }
-                return  buffer.ToString();
+                receivedBufferlen = clientSocket.Receive(buffer);
             }
+            catch (Exception)
+            {
 
+                Thread.Yield();
 
-
+            }
+            return _charEncoder.GetString(buffer, 0, receivedBufferlen);
         }
+
+
+
     }
 }

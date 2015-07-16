@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WebServer.Model;
+using System.Configuration;
 
-namespace WebServer.Host
+namespace WebServer.Model
 {
     class Program
     {
@@ -13,8 +14,21 @@ namespace WebServer.Host
         {
             try
             {
-                Listener serverListener = new Listener(80);
-                serverListener.Start();
+                string host = ConfigurationManager.AppSettings["webserver-host"];
+                if (string.IsNullOrEmpty(host))
+                    throw new Exception("Host is invalid");
+
+                int port = 0;
+                if (int.TryParse(ConfigurationManager.AppSettings["webserver-port"], out port) == false)
+                    throw new Exception("Port is invalid");
+                var server = new Server(host, port);
+                server.Start();
+
+                Console.WriteLine("Enter any key to exit");
+                Console.ReadKey();
+
+                server.Stop();
+
             }
             catch (Exception e)
             {

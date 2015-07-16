@@ -9,52 +9,33 @@ using System.Net.Sockets;
 using System.Threading;
 using System.IO;
 using System.Diagnostics;
-using System.Configuration;
-using Webserver.Model;
-
-
 namespace WebServer.Model
 {
-   public  class Listener
+    public class Listener
     {
-       private TcpListener _listener;
-        private bool _running = false;
-        public Listener(int port)
+
+        private TcpListener _tcpListener;
+
+        public Listener(string host, int port)
         {
-            this._listener = new TcpListener(IPAddress.Any, port);
+            this._tcpListener = new TcpListener(IPAddress.Parse(host), port);
         }
 
-        public void Start()
+        public void Listen()
         {
-            Thread serverThread = new Thread(new ThreadStart(Run));
-            serverThread.Start();
-        }
-
-        private void Run()
-        {
-            _running = true;
-            this._listener.Start();
-            Queue queueObject = new Queue();
-            while (_running)
+            this._tcpListener.Start();
+            while (true)
             {
-                if (_listener.Pending())
-                {
+                var socket = this._tcpListener.AcceptSocket();
+                if (socket.Connected == false) continue;
 
-                    Socket clientSocket = this._listener.AcceptSocket();
-                    if (clientSocket.Connected == false) continue;
-                    queueObject.Enqueue(clientSocket);
-
-                    if (queueObject.TryDequeue(out clientSocket) == false) continue;
-
-                    Dispatcher dispatcher = new Dispatcher(clientSocket);
-                    Thread dispatcherThread = new Thread(new ThreadStart(dispatcher.HandleClient));
-                    dispatcherThread.Start();
-                    //clientSocket.Close();
-                }
+                Application.RequestQueue.Enqueue(socket);
             }
-            _running = false;
-            _listener.Stop();
         }
 
+        public void Stop()
+        {
+            this._tcpListener.Stop();
+        }
     }
 }
