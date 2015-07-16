@@ -11,17 +11,17 @@ namespace CustomTesting.Model
     public class TestClassTwo
     {
         [TestMethod]
-        public void M1()
+        public void M4()
         {
 
         }
         [TestMethod]
-        public void M2()
+        public void M5()
         {
 
         }
         [TestMethod]
-        public void M3()
+        public void M6()
         {
 
         }

@@ -51,6 +51,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CustomTest.Model\CustomTest.Model.csproj">
+      <Project>{cd3191dd-b24b-4a92-b9ec-9afba6f08ba0}</Project>
+      <Name>CustomTest.Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CustomTesting.Attirbutes\CustomTesting.Attirbutes.csproj">
       <Project>{1de41dd0-742d-45f7-bcd1-1b65f2fc867a}</Project>
       <Name>CustomTesting.Attirbutes</Name>

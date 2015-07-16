@@ -12,18 +12,18 @@ namespace CustomTesting.Model
     {
         [TestMethod]
         [Ignore]
-        public void M1()
+        public void M7()
         {
 
         }
         [TestMethod]
-        public void M2()
+        public void M8()
         {
 
         }
         [TestMethod]
         [Ignore]
-        public void M3()
+        public void M9()
         {
 
         }

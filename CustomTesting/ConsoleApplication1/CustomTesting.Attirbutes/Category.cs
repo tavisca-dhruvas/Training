@@ -16,21 +16,11 @@ namespace CustomTesting.Attributes
     public class Category : System.Attribute
     {
         private string _category;
-
-        public string Category1
-        {
-            get
-            {
-                return _category;
-            }
-
-        }
+        
         public Category(string category)
         {
-            this._category = Category1;
+            _category = category;
         }
-
-
         public static bool Exists(MethodInfo memberInfo, string category)
         {
             foreach (object attribute in memberInfo.GetCustomAttributes(true))
@@ -38,7 +28,7 @@ namespace CustomTesting.Attributes
                 if (attribute is Category)
                 {
                     var attr = attribute as Category;
-                    return attr._category.Equals(category, StringComparison.OrdinalIgnoreCase);
+                    return attr._category != null ? attr._category.Equals(category, StringComparison.OrdinalIgnoreCase) : false;
                 }
             }
             return false;

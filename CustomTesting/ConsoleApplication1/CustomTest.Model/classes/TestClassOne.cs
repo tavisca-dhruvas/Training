@@ -10,8 +10,7 @@ namespace CustomTesting.Model
     [TestClass]
     public class TestClassOne
     {
-        [TestMethod]
-        [Category("Smoke test")]
+        [TestMethod,Category("Smoke Test")]
         public void M1()
         {
 
