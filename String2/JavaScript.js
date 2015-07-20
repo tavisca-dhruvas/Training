@@ -1,31 +1,21 @@
-﻿String.prototype.concatString = function (secondString) {
-
+﻿
+String.prototype.ConcatString = function () {
 
     var firstString = this;
-    var secondString = secondString;
-    var concatenatedString = [firstString.length + secondString.length];
-    var temp = firstString.length;
-    if (temp < secondString.length)
-        temp = secondString.length;
-    for (var index = 0; index < temp; index++) {
-        if (index < firstString.length)
-        { concatenatedString[index] = firstString.charAt(index); }
-        if (index < secondString.length)
-            concatenatedString[index + firstString.length] = secondString.charAt(index);
+    for (var index = 0; index < arguments.length; i++) {
+        if (arguments[i] == "null")
+            firstString += "null";
+        if (arguments[i] == "undefined")
+            firstString += "undefined";
+        firstString += arguments[i];
     }
+    return firstString;
 
-
-    concatenatedString = concatenatedString.join("");
-
-    return concatenatedString;
-
-}
+};
 
 
 
-
-
-String.prototype.Substring = function (numOne, numTwo) {
+String.prototype.Substring = function (numberOne, numberTwo) {
     if (numOne < 0 || numTwo < 0) {
         document.write("Invalid arguements entered");
         return;
