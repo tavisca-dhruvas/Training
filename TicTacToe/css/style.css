@@ -1,0 +1,66 @@
+body{
+	width:70%;
+	margin: 0 auto;
+}
+
+header label{
+	font-size: 60px;
+	padding: 0 15px;
+}
+.marker{
+	margin: 20px 50px 0;
+}
+
+section label{
+	font-family: helvetica;
+	font-size: 40px;
+	color:#3355ff;
+}
+.start-button{
+	margin:0 130px;
+	position: absolute;
+	background: url('../images/start.png');
+	min-width: 60px;
+	min-height: 30px;
+	border: none;
+	opacity: .5;
+}
+
+.restart-button{
+	margin:22px 75px;
+	background: url('../images/restart.jpg');
+	min-width: 129px;
+	min-height: 25px;
+	border: none;
+	border-radius: 5px;
+}
+
+#tick{
+	visibility: hidden;
+}
+
+#game-board{
+	display: none;
+	padding: 40px;
+}
+
+#game-board input{
+	min-height: 75px;
+	min-width: 75px;
+	margin: 0;
+	padding: 0;
+	text-indent: -100px;
+	vertical-align: top;
+}
+
+#result-container{
+	display: none;
+}
+
+#result-container img{
+	margin:12px 108px;
+}
+
+#result-container label{
+	margin:0 48px;
+}

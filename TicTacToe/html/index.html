@@ -1,0 +1,38 @@
+<html>
+	<head>
+		<title>TicTacToe</title>
+		<link rel="stylesheet" href="../css/style.css"/>
+	</head>
+	<body>
+		<header>
+			<label>Tic-Tac-Toe</label>
+		</header>
+		<main>
+		<section>
+			<div id="first-screen">
+				<label>Select Your Marker</label>
+				<div>
+					<img class="marker" src="../images/x.png" alt="X" onclick="MarkerClicked(1)" />
+					<img class="marker" src="../images/o.png" alt="O" onclick="MarkerClicked(2)"/>
+				</div>
+				<div id="selected">
+					<img id="tick" src="../images/tick.png"/>
+				</div>
+				<input class="start-button" id="start-button" disabled="true" type="button" onclick="StartGame()"/>
+			</div>
+			<div id="game-board"></div>
+			<div id="result-container">
+				<img id="winner-marker" />
+				<div>
+					<label id="msg">WINSSS!!!!</label>
+				</div>
+				<div>
+					<input class="restart-button" type="button" onclick="StartAgain()"/>
+				</div>
+			</div>
+		</section>
+		</main>
+		<script type="text/javascript" src="../js/index.js"></script>
+		<script type="text/javascript" src="../js/winning-conditions.js"></script>
+	</body>
+</html>
