@@ -1,14 +1,16 @@
 ﻿window.ball = window.ball || {}
 
+
+
 window.ball.boundaryCondition = function () {
 
-    var height = window.innerHeight - 200;
-    var width = window.innerWidth - 200;
+    var height = window.innerHeight - 50;
+    var width = window.innerWidth - 50;
     if (window.ball.xPosition < 0) {
         window.ball.xDirection = true;
         window.ball.xPosition = 0;
     }
-    if (window.ball.xPosition >= (width)) {
+    if  (window.ball.xPosition >= (width)) {
         window.ball.xDirection = false;
         window.ball.xPosition = (width);
     }
@@ -23,3 +25,9 @@ window.ball.boundaryCondition = function () {
         window.ball.yPosition = height;
     }
 }
+
+//window.ball.monitor=function() {
+//    var interval = setInterval('window.ball.boundaryCondition()', 10);
+//}
+
+//window.onload = window.ball.monitor();
