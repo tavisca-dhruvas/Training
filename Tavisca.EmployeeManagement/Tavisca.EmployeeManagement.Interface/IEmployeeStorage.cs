@@ -10,7 +10,7 @@ namespace Tavisca.EmployeeManagement.Interface
     public interface IEmployeeStorage
     {
         Employee Save(Employee employee);
-
+        Remark SaveRemark(string employeeId,Remark remark);
         Employee Get(string employeeId);
 
         List<Employee> GetAll();

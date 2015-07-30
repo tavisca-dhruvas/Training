@@ -35,15 +35,21 @@ namespace Tavisca.EmployeeManagement.FileStorage
         public Model.Employee Get(string employeeId)
         {
             Model.Employee result;
-            result = _cacheManager.Get(string.Format(KEYFORMAT, employeeId), CACHEMANAGER) as Model.Employee;
-            if (result == null)
-            {
+           result = _cacheManager.Get(string.Format(KEYFORMAT, employeeId), CACHEMANAGER) as Model.Employee;
+           if (result == null)
+           {
                 result = _innerStorage.Get(employeeId);
-                _cacheManager.Add(string.Format(KEYFORMAT, employeeId), result, CACHEMANAGER);
-            }
+            _cacheManager.Add(string.Format(KEYFORMAT, employeeId), result, CACHEMANAGER);
+          }
             return result;
         }
-
+        public Model.Remark SaveRemark(string employeeId, Model.Remark remark)
+        {
+            var result = _innerStorage.SaveRemark(employeeId,remark);
+            _cacheManager.Add(string.Format(KEYFORMAT, employeeId), result, CACHEMANAGER);
+            return result;
+        
+        }
         public List<Model.Employee> GetAll()
         {
             return _innerStorage.GetAll();
