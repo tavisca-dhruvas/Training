@@ -20,6 +20,7 @@ namespace Tavisca.EmployeeManagement.Translator
                 Email = employee.Email,
                 JoiningDate = employee.JoiningDate,
                 Phone = employee.Phone,
+                Password= employee.Password,
                 Remarks = employee.Remarks == null ? null : employee.Remarks.Select(remark => remark.ToDomainModel()).ToList()
             };
         }

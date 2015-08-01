@@ -33,5 +33,22 @@ namespace Tavisca.EmployeeManagement.BusinessLogic
             _storage.SaveRemark(employeeId,remark);
             return remark;
         }
+
+        public Employee  UpdatePassword(string employeeId, Employee employee)
+        {
+            employee.PasswordValidate();
+            _storage.UpdatePassword(employeeId, employee);
+            return employee;
+ 
+        }
+        public Employee Authenticate(string emailId, string password)
+        {
+          var employee = _storage.Authenticate(emailId,password);
+           if (employee == null)
+           {
+               return null;
+           }
+           return employee;
+       }
     }
 }

@@ -50,9 +50,21 @@ namespace Tavisca.EmployeeManagement.FileStorage
             return result;
         
         }
+        public Model.Employee UpdatePassword(string employeeId, Model.Employee employee)
+        {
+            var result =_innerStorage.UpdatePassword(employeeId, employee);
+            _cacheManager.Add(string.Format(KEYFORMAT, employeeId), result, CACHEMANAGER);
+            return result;
+        }
         public List<Model.Employee> GetAll()
         {
             return _innerStorage.GetAll();
+        }
+        public Model.Employee Authenticate(string emailId, string password)
+        {
+            var result = _innerStorage.Authenticate(emailId, password);
+            _cacheManager.Add(string.Format(KEYFORMAT, emailId), result, CACHEMANAGER);
+            return result;
         }
     }
 }

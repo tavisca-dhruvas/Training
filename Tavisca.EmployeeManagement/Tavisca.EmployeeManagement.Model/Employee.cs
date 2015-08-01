@@ -22,18 +22,27 @@ namespace Tavisca.EmployeeManagement.Model
 
         public DateTime JoiningDate  { get; set; }
 
+        public string Password { get; set; }
+
         public List<Remark> Remarks { get; set; }
 
         public void Validate()
         {
             if (string.IsNullOrWhiteSpace(this.FirstName))
-                throw new Exception("FirstName cannot be null or empty.");
+              throw new Exception("FirstName cannot be null or empty.");
 
-            if (string.IsNullOrWhiteSpace(this.Email))
-                throw new Exception("Email cannot be null or empty.");
+           if (string.IsNullOrWhiteSpace(this.Email))
+               throw new Exception("Email cannot be null or empty.");
 
            if (this.JoiningDate == DateTime.MinValue || this.JoiningDate == DateTime.MinValue)
                throw new Exception("Invalid joining date provided.");
+
+            
+        }
+        public void PasswordValidate()
+        {
+            if (string.IsNullOrWhiteSpace(this.Password))
+                throw new Exception("password cannot be null or empty.");
         }
     }
 }

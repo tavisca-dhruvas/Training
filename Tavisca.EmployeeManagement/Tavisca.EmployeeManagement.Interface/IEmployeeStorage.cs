@@ -12,6 +12,8 @@ namespace Tavisca.EmployeeManagement.Interface
         Employee Save(Employee employee);
         Remark SaveRemark(string employeeId,Remark remark);
         Employee Get(string employeeId);
+        Employee UpdatePassword(string employeeId, Employee employee);
+        Employee Authenticate(string emailId, string password);
 
         List<Employee> GetAll();
     }

@@ -15,6 +15,7 @@ namespace Tavisca.EmployeeManagement.ServiceTests
             client.Headers.Add("Content-Type", contentType ?? "application/json");
             var response = client.DownloadString(url);
             return Serializer.Deserialize<T>(response);
+            
         }
 
         public T2 UploadData<T1,T2>(string url, T1 data, string contentType = "application/json", string method = "POST")

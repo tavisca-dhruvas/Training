@@ -51,5 +51,31 @@ namespace Tavisca.EmployeeManagement.ServiceImpl
                 throw newEx;
             }
         }
+        public DataContract.Employee UpdatePassword(string employeeId, DataContract.Employee employee)
+        {
+            try
+            {
+               var result = _manager.UpdatePassword(employeeId, employee.ToDomainModel());
+                 if (result == null) return null;
+                return result.ToDataContract();
+
+            }
+            catch (Exception ex)
+            {
+                Exception newEx;
+                var rethrow = ExceptionPolicy.HandleException("service.policy", ex, out newEx);
+                throw newEx;
+            }
+ 
+        }
+        public DataContract.Employee Authenticate(DataContract.Credentials credentials)
+        {
+            var result = _manager.Authenticate(credentials.EmailId, credentials.Password);
+            if (result == null)
+            {
+                return null;
+            }
+            return result.ToDataContract();
+        }
     }
 }
