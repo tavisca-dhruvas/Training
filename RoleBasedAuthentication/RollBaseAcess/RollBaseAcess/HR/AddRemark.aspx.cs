@@ -1,4 +1,4 @@
-﻿using RollBaseAcess.Model;
+﻿using RollBasedAuthentication.Model;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -13,27 +13,18 @@ namespace RollBaseAcess.HR
     {
 
 
-        string _emsUri = ConfigurationManager.AppSettings["EMSUri"];
-        string _esUri = ConfigurationManager.AppSettings["ESUri"];
+       
         public Dictionary<string, string> empRecord = new Dictionary<string, string>();
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
-                
+                Remark remark = new Remark();
+                var empRecord = remark.ShowEmployee();
+
                 if (Page.IsPostBack == false)
                 {
-                    HttpClient client = new HttpClient();
-                    var empResponse = client.GetData<GetAllEmployee>(_esUri + "/employee");
-                    if (empResponse.Status.StatusCode != "200")
-                    {
-
-                        return;
-                    }
-                    foreach (var employeeRecord in empResponse.AllEmployeeList.OrderBy(employee => employee.FirstName))
-                    {
-                        empRecord.Add(employeeRecord.FirstName + " " + employeeRecord.LastName, employeeRecord.Id);
-                    }
+        
                     DropDownList1.DataTextField = "Key";
                     DropDownList1.DataValueField = "Value";
                     DropDownList1.DataSource = empRecord;
@@ -57,9 +48,14 @@ namespace RollBaseAcess.HR
                 int employeeId = Convert.ToInt32(DropDownList1.SelectedValue);
                 remark.Text = TextBox1.Text;
                 remark.CreateTimeStamp = DateTime.UtcNow;
-                HttpClient client = new HttpClient();
-                var empRespone = client.UploadData<Remark, Employee>(_emsUri + "/employee/" + employeeId + "/remark", remark);
-                Label2.Text = "Success!!";
+
+               var remarkResponse = remark.Add(employeeId, remark);
+               if (remarkResponse.StatusCode != "200")
+               {
+                   Label2.Text = "Remark Not Added";
+               }
+
+                Label2.Text = "Successfull!!";
                 TextBox1.Text = "";
                 DropDownList1.SelectedIndex = -1;
 

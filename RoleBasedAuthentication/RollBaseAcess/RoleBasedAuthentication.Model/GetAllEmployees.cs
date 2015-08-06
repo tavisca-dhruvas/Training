@@ -5,13 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.Serialization;
 
-namespace RollBaseAcess.Model
+namespace RollBasedAuthentication.Model
 {
-    [DataContract]
-    public class RemarkCount:Result
+
+    public class GetAllEmployee : Result
     {
-        [DataMember]
-        public string totalRemark
+
+        public List<Employee> AllEmployeeList
         {
             get;
             set;

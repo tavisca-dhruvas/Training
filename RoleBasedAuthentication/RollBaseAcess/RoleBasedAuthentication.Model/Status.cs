@@ -4,19 +4,19 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 
-namespace RollBaseAcess.Model
+namespace RollBasedAuthentication.Model
 {
-    [DataContract]
+
     public class Status
     {
-        [DataMember]
+
         public String StatusCode
         {
             get;
             set;
         }
 
-        [DataMember]
+
         public string Message
         {
             get;

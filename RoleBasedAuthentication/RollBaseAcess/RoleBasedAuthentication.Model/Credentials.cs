@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RollBaseAcess.Model
+ namespace RollBasedAuthentication.Model
 {
 
     public class Credentials

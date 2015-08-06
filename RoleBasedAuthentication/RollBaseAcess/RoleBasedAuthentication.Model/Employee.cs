@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
 
-namespace RollBaseAcess.Model
+namespace RollBasedAuthentication.Model
 {
     public class Employee
     {
@@ -34,10 +35,6 @@ namespace RollBaseAcess.Model
             if (string.IsNullOrWhiteSpace(this.Email))
                 throw new Exception("Email cannot be null or empty.");
 
-            //  if (this.JoiningDate == DateTime.MinValue || this.JoiningDate == DateTime.MinValue)
-            //   throw new Exception("Invalid joining date provided.");
-
-
         }
 
         public void PasswordValidate()
@@ -56,6 +53,19 @@ namespace RollBaseAcess.Model
                 Title = this.Title,
                 Email = this.Email
             };
+        }
+        public Status CreateEmployee(Employee employee)
+        {
+
+            string EmployeeManagementServiceUrl = ConfigurationManager.AppSettings["EMSUri"];
+            var client = new HttpClient();
+            var createdEmployee = client.UploadData<Employee, EmployeeResponse>(EmployeeManagementServiceUrl + "/employee", employee);
+            if (createdEmployee.Status.StatusCode.Equals("200"))
+            {
+                return (createdEmployee.Status);
+            }
+            else
+                return null;
         }
     }
 }

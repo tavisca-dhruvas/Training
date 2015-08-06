@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RollBaseAcess.Model.Session
+namespace RollBasedAuthentication.Model.Session
 {
     [Serializable]
     public class Employee
@@ -19,7 +19,7 @@ namespace RollBaseAcess.Model.Session
 
         public string Email { get; set; }
 
-        internal Model.Employee ToServer()
+        public Model.Employee ToServer()
         {
             return new Model.Employee
             {

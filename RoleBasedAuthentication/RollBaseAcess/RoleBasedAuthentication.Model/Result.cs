@@ -4,12 +4,12 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 
-namespace RollBaseAcess.Model
+namespace RollBasedAuthentication.Model
 {
-    [DataContract]
+
     public class Result
     {
-        [DataMember]
+
         public Status Status;
         public Result()
         {

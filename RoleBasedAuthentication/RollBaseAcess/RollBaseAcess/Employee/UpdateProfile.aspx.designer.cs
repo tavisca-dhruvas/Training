@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace RollBaseAcess._1.View {
+namespace RollBaseAcess {
     
     
     public partial class WebForm3 {

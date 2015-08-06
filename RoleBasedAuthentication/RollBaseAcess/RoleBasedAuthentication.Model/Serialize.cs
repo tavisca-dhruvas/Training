@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 using System.Runtime.Serialization.Json;
 using System.IO;
 
-namespace RollBaseAcess.Model
+namespace RollBasedAuthentication.Model
 {
     public static class Serializer
     {
@@ -23,7 +23,7 @@ namespace RollBaseAcess.Model
             }
         }
 
-     public  static T Deserialize<T>(string data)
+        public static T Deserialize<T>(string data)
         {
             using (var ms = new MemoryStream())
             {

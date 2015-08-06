@@ -1,4 +1,4 @@
-﻿using RollBaseAcess.Model;
+﻿using RollBasedAuthentication.Model;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -11,12 +11,12 @@ namespace RollBaseAcess.HR
 {
     public partial class UpdateProfile : System.Web.UI.Page
     {
-        string _emsUri = ConfigurationManager.AppSettings["EMSUri"];
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
-                Employee empObject = ((Model.Session.Employee)Session["Response"]).ToServer();
+                Employee empObject = ((RollBasedAuthentication.Model.Session.Employee)Session["Response"]).ToServer();
                 if (empObject == null)
                 {
                     Response.Redirect("Login.aspx");
@@ -35,14 +35,14 @@ namespace RollBaseAcess.HR
             changePassword.EmailId = TextBox1.Text;
             changePassword.OldPassword = TextBox2.Text;
             changePassword.NewPassword = TextBox4.Text;
-            HttpClient client = new HttpClient();
-            var empResponse = client.UploadData<ChangePasssword, Result>(_emsUri + "/update", changePassword);
-            if (empResponse.Status.StatusCode != "200")
+            var empResponse = changePassword.UpdatePassword(changePassword);
+
+            if (empResponse.StatusCode != "200")
             {
                 Label5.Text = "Failure!!";
                 return;
             }
-            Label5.Text = "Success!!";
+            Label5.Text = "Password Changed!!";
         }
 
         protected void Button2_Click(object sender, EventArgs e)

@@ -1,4 +1,4 @@
-﻿using RollBaseAcess.Model;
+﻿using RollBasedAuthentication.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +14,7 @@ namespace RollBaseAcess
         {
             if (Page.IsPostBack == false)
             {
-                Employee empObject = ((Model.Session.Employee)Session["Response"]).ToServer();
+                Employee empObject = ((RollBasedAuthentication.Model.Session.Employee)Session["Response"]).ToServer();
                 if (string.Equals(empObject.Title, "Hr") == true)
                 {
                     Response.Redirect("HR/AddRemark.aspx");

@@ -1,4 +1,4 @@
-﻿using RollBaseAcess.Model;
+﻿using RollBasedAuthentication.Model;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -15,7 +15,7 @@ namespace RollBaseAcess
 {
     public partial class Login : System.Web.UI.UserControl
     {
-        string _emsUri = ConfigurationManager.AppSettings["EMSUri"];
+       
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -33,7 +33,8 @@ namespace RollBaseAcess
             try
             {
                 HttpClient client = new HttpClient();
-                var empResponse = client.UploadData<Credentials,EmployeeResponse>(_emsUri + "/login", credentials);
+                var empResponse = client.Authenticate(credentials);
+
                 if (empResponse.Status.StatusCode.Equals("200")==true)
                 {
                     FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(
@@ -51,14 +52,14 @@ namespace RollBaseAcess
                        hash);
                     Response.Cookies.Add(cookie);
                     Session["Response"] = empResponse.Employee.ToSession();
-                    //Response.Redirect("HR/AddRemark.aspx");
+                    
 
                     Response.Redirect(FormsAuthentication.GetRedirectUrl(empResponse.Employee.Email, true));
                 }
             }
             catch (Exception)
             {
-                Label3.Text = "Invalid Username or Password ";
+                Label3.Text = " Username or Password is incorrect ";
 
             }
         }

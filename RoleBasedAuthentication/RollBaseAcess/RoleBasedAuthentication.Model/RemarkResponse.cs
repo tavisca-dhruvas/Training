@@ -5,12 +5,12 @@ using System.Runtime.Serialization;
 using System.Text;
 
 
-namespace RollBaseAcess.Model
+namespace RollBasedAuthentication.Model
 {
-    [DataContract]
+
     public class RemarkResponse : Result
     {
-        [DataMember]
+
         public Remark Remark
         {
             get;
