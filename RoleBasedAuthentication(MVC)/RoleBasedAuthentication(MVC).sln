@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoleBasedAuthentication(MVC)", "RoleBasedAuthentication(MVC)\RoleBasedAuthentication(MVC).csproj", "{F642BF37-0B70-4B6A-8989-A07C85D0443D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoleBasedAuthentication.Model", "RoleBasedAuthentication.Model\RoleBasedAuthentication.Model.csproj", "{8DC3872B-BF32-46FA-8B52-75C611D05407}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoleBasedAuthentication.Helper", "RoleBasedAuthentication.Helper\RoleBasedAuthentication.Helper.csproj", "{90FA7CDC-2FF8-4D77-A25A-E215DE807687}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F642BF37-0B70-4B6A-8989-A07C85D0443D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F642BF37-0B70-4B6A-8989-A07C85D0443D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F642BF37-0B70-4B6A-8989-A07C85D0443D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F642BF37-0B70-4B6A-8989-A07C85D0443D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DC3872B-BF32-46FA-8B52-75C611D05407}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DC3872B-BF32-46FA-8B52-75C611D05407}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DC3872B-BF32-46FA-8B52-75C611D05407}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DC3872B-BF32-46FA-8B52-75C611D05407}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90FA7CDC-2FF8-4D77-A25A-E215DE807687}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90FA7CDC-2FF8-4D77-A25A-E215DE807687}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90FA7CDC-2FF8-4D77-A25A-E215DE807687}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90FA7CDC-2FF8-4D77-A25A-E215DE807687}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
