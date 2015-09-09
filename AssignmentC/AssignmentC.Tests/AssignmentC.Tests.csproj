@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9F77F539-470F-4165-87FD-311D8AECE6CF}</ProjectGuid>
+    <ProjectGuid>{EB4FB60E-EE1C-4928-8C66-8A8884449602}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Tavisca.EmployeeManagement.ServiceTests</RootNamespace>
-    <AssemblyName>Tavisca.EmployeeManagement.ServiceTests</AssemblyName>
+    <RootNamespace>AssignmentC.Tests</RootNamespace>
+    <AssemblyName>AssignmentC.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -35,15 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net20\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Runtime.Serialization.Json" />
-    <Reference Include="System.XML" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -58,26 +50,15 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="EmployeeManagementTestFixture.cs" />
-    <Compile Include="Model\Employee.cs" />
-    <Compile Include="Model\DataAdapter.cs" />
-    <Compile Include="Model\HttpClient.cs" />
-    <Compile Include="Model\Remark.cs" />
+    <Compile Include="FlightSortTestCases.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Model\Serializer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Data\Data.xls">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
-    </None>
+    <ProjectReference Include="..\AssignmentC\AssignmentC.csproj">
+      <Project>{656dca42-1e54-4114-8ac8-2d10a2971673}</Project>
+      <Name>AssignmentC</Name>
+    </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
