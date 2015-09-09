@@ -12,10 +12,13 @@ namespace AssignmentC
         {
             Regulation regulation = new Regulation();
             var weightedItinerary = regulation.ApplyRules(discounted);
+
             FilterSearch filterSearch = new FilterSearch();
 
-            filterSearch.FilterAirResults(weightedItinerary);
+            weightedItinerary = filterSearch.FilterAirResults(weightedItinerary);
+
             SortResults sortResults = new SortResults();
+
             return sortResults.SortingAirResults(weightedItinerary);
 
         }
