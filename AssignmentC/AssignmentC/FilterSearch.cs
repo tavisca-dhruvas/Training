@@ -12,9 +12,26 @@ namespace AssignmentC
         {
             for (int i = 0; i < weightedItinerary.Count(); i++)
             {
-                if (weightedItinerary.ElementAt(i).Value == -1)
+                if ((weightedItinerary.ElementAt(i).Key.Airline == "SouthWest Airlines") && (weightedItinerary.ElementAt(i).Key.OriginAirportCode=="Dallas"))
                 {
-                    weightedItinerary.Remove(weightedItinerary.ElementAt(i).Key);
+                    
+                    for (int j = 0; j < weightedItinerary.Count(); j++)
+                    {
+                        if (weightedItinerary.ElementAt(j).Value == -1)
+                        {
+                            if ((weightedItinerary.ElementAt(i).Key.NumberOfStops == weightedItinerary.ElementAt(j).Key.NumberOfStops))
+                            {
+                                if (weightedItinerary.ElementAt(i).Key.ClassOfService == weightedItinerary.ElementAt(j).Key.ClassOfService)
+                                    weightedItinerary.Remove(weightedItinerary.ElementAt(j).Key);
+
+                            }
+                            else
+                            {
+                                weightedItinerary[weightedItinerary.ElementAt(i).Key] = 0;
+                            }
+                        }
+ 
+                    }
                 }
 
             }

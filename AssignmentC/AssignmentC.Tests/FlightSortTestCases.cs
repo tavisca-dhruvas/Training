@@ -25,9 +25,10 @@ namespace AssignmentC.Tests
             itineraryObject.OriginAirportCode = "Dallas";
             itineraryObject.DestinationAirportCode = "JFK";
             itineraryObject.FlightTime = TimeSpan.Zero;
-            itineraryObject.NumberOfStops = 2;
+            itineraryObject.NumberOfStops = 5;
             itineraryObject.TotalLayoverTime = TimeSpan.Zero;
             itineraryObject.Airline = "American Airlines";
+            itineraryObject.ClassOfService = "Business Class";
             itineraryObject.UtcDepartureTime = new DateTime(2008, 6, 19);
             itineraryObject.UtcArrivalTime = new DateTime(2008, 6, 20);
             itineraryObject.BaseFareInUSD = 190;
@@ -37,6 +38,7 @@ namespace AssignmentC.Tests
             itineraryObject1.DestinationAirportCode = "DeltaAirways";
             itineraryObject1.FlightTime = TimeSpan.Zero;
             itineraryObject1.NumberOfStops = 5;
+            itineraryObject.ClassOfService = "Business Class";
             itineraryObject1.TotalLayoverTime = TimeSpan.Zero;
             itineraryObject1.Airline = "SouthWest Airlines";
             itineraryObject1.UtcDepartureTime = new DateTime(2008, 6, 19);
@@ -48,6 +50,7 @@ namespace AssignmentC.Tests
             itineraryObject2.DestinationAirportCode = "DeltaAirways";
             itineraryObject2.FlightTime = TimeSpan.Zero;
             itineraryObject2.NumberOfStops = 5;
+            itineraryObject2.ClassOfService = "Business Class";
             itineraryObject2.TotalLayoverTime = TimeSpan.Zero;
             itineraryObject2.Airline = "SouthWest Airlines";
             itineraryObject2.UtcDepartureTime = new DateTime(2008, 6, 19, 7, 0, 0);

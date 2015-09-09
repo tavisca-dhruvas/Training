@@ -15,6 +15,8 @@ namespace AssignmentC
 
         public TimeSpan FlightTime { get; set; }
 
+        public string ClassOfService { get; set; }
+
         public int NumberOfStops { get; set; }
 
         public TimeSpan TotalLayoverTime { get; set; }
@@ -32,6 +34,8 @@ namespace AssignmentC
         public decimal MarkupInUSD { get; set; }
 
         public decimal TotalFareInUSD { get { return this.BaseFareInUSD + this.MarkupInUSD; } }
+
+
     }
 
 

@@ -31,7 +31,7 @@ namespace AssignmentC
 
             foreach (KeyValuePair<Itinerary, int> entry in itineraryDictionary)
             {
-                if (entry.Value.Equals(0))
+                if (entry.Value.Equals(0) || entry.Value.Equals(-1))
                 {
                     flag = true;
                 }
