@@ -10,7 +10,7 @@ namespace AssignmentB
 {
     public class MarkupCalculator
     {
-        public MarkupCalculator(decimal distributionCost = 10m, decimal minDiscount = 0)
+        public MarkupCalculator(decimal distributionCost = 10m, decimal minDiscount = 15m)
         {
             DistributionCost = distributionCost;
             MinDiscount = minDiscount;

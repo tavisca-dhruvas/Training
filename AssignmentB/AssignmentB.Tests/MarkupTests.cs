@@ -8,7 +8,7 @@ namespace AssignmentB.Tests
     public class MarkupTests
     {
         [TestMethod]
-        public void MarkUpisDeltaBetweenPublishedAndRateTest()
+        public void MarkUpisDeltaBetweenPublishedAndnetRateTest()
         {
             var calculator = new MarkupCalculator();
             Itinerary published = new Itinerary();
@@ -22,7 +22,7 @@ namespace AssignmentB.Tests
             netRate.TotalLayoverTime = new TimeSpan(0, 15, 0);
             var markup = calculator.Getmarkup(published, netRate);
 
-            Assert.AreEqual(50m, markup);
+            Assert.AreEqual(35m, markup);
         }
 
 
@@ -47,7 +47,7 @@ namespace AssignmentB.Tests
         [TestMethod]
         public void MaxMarkupIsPublishedRateWithMinimumDiscountRateTest()
         {
-            var calculator = new MarkupCalculator(10m,15m);
+            var calculator = new MarkupCalculator();
             Itinerary published = new Itinerary();
             published.BaseFareInUSD = 150m;
 
@@ -64,7 +64,7 @@ namespace AssignmentB.Tests
         public void MaxMarkupShouldBeAlwaysGreaterthanDistributionCost()
         {
 
-            var calculator = new MarkupCalculator(10m);
+            var calculator = new MarkupCalculator();
             Itinerary published = new Itinerary();
             published.BaseFareInUSD = 109m;
 
@@ -84,7 +84,7 @@ namespace AssignmentB.Tests
 
             var calculator = new MarkupCalculator();
             Itinerary published = new Itinerary();
-            published.BaseFareInUSD = 110m;
+            published.BaseFareInUSD = 125m;
 
             Itinerary netRate = new Itinerary();
             netRate.BaseFareInUSD = 100m;
@@ -102,7 +102,7 @@ namespace AssignmentB.Tests
         [TestMethod]
         public void MarkupIsInverselyProportionalToNumberOfStops()
         {
-            var calculator = new MarkupCalculator(20m);
+            var calculator = new MarkupCalculator();
             Itinerary published = new Itinerary();
             published.BaseFareInUSD = 150m;
             published.NumberOfStops = 0;
@@ -115,7 +115,7 @@ namespace AssignmentB.Tests
 
             var markup = calculator.Getmarkup(published, netRate);
 
-            Assert.AreEqual(50m, markup);
+            Assert.AreEqual(35m, markup);
 
         }
         [TestMethod]
@@ -162,7 +162,7 @@ namespace AssignmentB.Tests
             var calculator = new MarkupCalculator(10m);
             Itinerary published = new Itinerary();
             published.BaseFareInUSD = 150m;
-            published.FlightTime = Itinerary.MinimumFlightTime;
+            
             published.NumberOfStops = 0;
 
 
@@ -175,7 +175,7 @@ namespace AssignmentB.Tests
 
             var markup = calculator.Getmarkup(published, netRate);
 
-            Assert.AreEqual(50, markup);
+            Assert.AreEqual(35, markup);
  
         }
         [TestMethod]
@@ -215,7 +215,7 @@ namespace AssignmentB.Tests
 
             var markup = calculator.Getmarkup(published, netRate);
 
-            Assert.AreEqual(50m, markup);
+            Assert.AreEqual(35m, markup);
 
         }
         [TestMethod]
